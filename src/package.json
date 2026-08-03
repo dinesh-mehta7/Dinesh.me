@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-scripts": "^5.0.0",
+    "react-is": "latest",
+    "react-router-dom": "latest",
+    "lucide-react": "^0.344.0",
+    "recharts": "latest",
+    "date-fns": "latest",
+    "framer-motion": "latest",
+    "react-hook-form": "latest",
+    "@hookform/resolvers": "latest",
+    "zod": "latest",
+    "@radix-ui/react-dialog": "latest",
+    "@radix-ui/react-dropdown-menu": "latest",
+    "@radix-ui/react-tabs": "latest",
+    "@radix-ui/react-tooltip": "latest",
+    "@radix-ui/react-accordion": "latest",
+    "@radix-ui/react-select": "latest",
+    "axios": "latest",
+    "clsx": "latest",
+    "class-variance-authority": "latest",
+    "tailwind-merge": "latest"
+  },
+  "main": "/index.js",
+  "devDependencies": {}
+}

@@ -1,0 +1,44 @@
+{
+  "name": "forge-app",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "react-is": "latest",
+    "react-router-dom": "latest",
+    "lucide-react": "^0.344.0",
+    "recharts": "latest",
+    "date-fns": "latest",
+    "framer-motion": "latest",
+    "react-hook-form": "latest",
+    "@hookform/resolvers": "latest",
+    "zod": "latest",
+    "@radix-ui/react-dialog": "latest",
+    "@emailjs/browser": "latest",
+    "@radix-ui/react-dropdown-menu": "latest",
+    "@radix-ui/react-tabs": "latest",
+    "@radix-ui/react-tooltip": "latest",
+    "@radix-ui/react-accordion": "latest",
+    "@radix-ui/react-select": "latest",
+    "axios": "latest",
+    "clsx": "latest",
+    "class-variance-authority": "latest",
+    "tailwind-merge": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version"
+    ]
+  }
+}
