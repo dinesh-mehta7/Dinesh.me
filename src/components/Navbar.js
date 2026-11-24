@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Code, Github, Linkedin } from 'lucide-react';
+import { Menu, X, Code, Github, Linkedin, Heart } from 'lucide-react';
 
 export default function Navbar({ personal }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState('home');
+  const [hireBurstKey, setHireBurstKey] = useState(0);
 
   const navLinks = [
     { label: 'Home', href: '#home' },
@@ -41,46 +42,45 @@ export default function Navbar({ personal }) {
   }, []);
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-[#0B1120]/80 backdrop-blur-md border-b border-slate-800/80 py-4 shadow-xl shadow-black/10' 
+        scrolled
+          ? 'bg-[#fffaf2]/85 backdrop-blur-md border-b border-[#dfd1bb]/80 py-4 shadow-xl shadow-black/10'
           : 'bg-transparent py-6'
       }`}
     >
       {/* Scroll Progress Bar */}
-      <div 
-        className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 transition-all duration-100"
+      <div
+        className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-[#39223e] via-[#654368] to-[#b58a45] transition-all duration-100"
         style={{ width: `${scrollProgress}%` }}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          
+
           {/* Logo */}
           <a href="#home" className="flex items-center space-x-2 group">
-            <div className="relative w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300">
-              <Code className="w-5 h-5 text-white" />
+            <div className="relative w-10 h-10 rounded-lg bg-[#39223e] flex items-center justify-center shadow-lg shadow-[#654368]/20 group-hover:scale-105 transition-transform duration-300">
+              <Code className="w-5 h-5 text-[#fffaf2]" />
               <div className="absolute inset-0 rounded-lg bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-lg tracking-wider text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-400 group-hover:to-cyan-400 transition-all uppercase">
+              <span className="font-bold text-lg tracking-wider text-[#302333] group-hover:text-[#8a708d] transition-all uppercase">
                 {personal.name}
               </span>
-              <span className="text-[10px] text-slate-400 font-mono tracking-widest -mt-1">FULL STACK DEV</span>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-1 bg-slate-900/40 p-1.5 rounded-full border border-slate-800/60 backdrop-blur-sm">
+          <nav className="hidden md:flex items-center space-x-1 bg-[#fffaf2]/40 p-1.5 rounded-full border border-[#dfd1bb]/60 backdrop-blur-sm">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   activeSection === link.href.substring(1)
-                    ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-md shadow-indigo-500/15'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800/50'
+                    ? 'bg-gradient-to-r from-[#39223e] to-[#654368] text-[#fffaf2] shadow-md shadow-[#654368]/15'
+                    : 'text-[#554954] hover:text-[#302333] hover:bg-[#eee2cf]/50'
                 }`}
               >
                 {link.label}
@@ -90,31 +90,50 @@ export default function Navbar({ personal }) {
 
           {/* Social Icons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <a 
-              href="https://github.com" 
-              target="_blank" 
+            <a
+              href="https://github.com"
+              target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full text-slate-400 hover:text-white hover:bg-slate-800/50 transition-colors"
+              className="p-2 rounded-full text-[#746872] hover:text-[#302333] hover:bg-[#eee2cf]/50 transition-colors"
               title="GitHub"
             >
               <Github className="w-5 h-5" />
             </a>
-            <a 
-              href="https://linkedin.com" 
-              target="_blank" 
+            <a
+              href="https://www.linkedin.com/in/dinesh-mehta-551985313/"
+              target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full text-slate-400 hover:text-white hover:bg-slate-800/50 transition-colors"
+              className="p-2 rounded-full text-[#746872] hover:text-[#302333] hover:bg-[#eee2cf]/50 transition-colors"
               title="LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
             </a>
-            <a 
+            <a
               href="#contact"
-              className="relative group overflow-hidden px-5 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-indigo-500 p-[1px] transition-transform duration-300 active:scale-95"
+              onClick={() => setHireBurstKey((key) => key + 1)}
+              aria-label="Hire me and go to the contact section"
+              className="relative group inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#b58a45] via-[#ead9ae] to-[#b58a45] p-[2px] transition-transform duration-300 hover:scale-[1.03] active:scale-95"
             >
-              <span className="relative block px-4 py-1.5 rounded-full bg-slate-950 text-xs font-semibold text-white group-hover:bg-transparent transition-all duration-300">
+              <span className="relative block rounded-full bg-gradient-to-r from-[#39223e] via-[#4a2d50] to-[#39223e] px-5 py-2 text-xs font-semibold text-[#fffaf2] transition-all duration-300">
                 Hire Me
               </span>
+              {hireBurstKey > 0 && (
+                <span className="hire-burst" key={hireBurstKey} aria-hidden="true">
+                  {Array.from({ length: 8 }, (_, index) => {
+                    const angle = (index * Math.PI) / 4;
+                    return (
+                      <Heart
+                        key={index}
+                        className="hire-heart"
+                        style={{
+                          '--heart-x': `${Math.cos(angle) * 48}px`,
+                          '--heart-y': `${Math.sin(angle) * 42}px`
+                        }}
+                      />
+                    );
+                  })}
+                </span>
+              )}
             </a>
           </div>
 
@@ -122,7 +141,7 @@ export default function Navbar({ personal }) {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/50 transition-colors focus:outline-none"
+              className="p-2 rounded-lg text-[#746872] hover:text-[#302333] hover:bg-[#eee2cf]/50 transition-colors focus:outline-none"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -133,8 +152,8 @@ export default function Navbar({ personal }) {
       </div>
 
       {/* Mobile Navigation Drawer */}
-      <div 
-        className={`md:hidden fixed inset-x-0 top-[73px] bg-slate-950/95 backdrop-blur-lg border-b border-slate-800 transition-all duration-300 ease-in-out transform ${
+      <div
+        className={`md:hidden fixed inset-x-0 top-[73px] bg-[#fffaf2]/95 backdrop-blur-lg border-b border-[#dfd1bb] transition-all duration-300 ease-in-out transform ${
           isOpen ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0 pointer-events-none'
         }`}
       >
@@ -146,24 +165,24 @@ export default function Navbar({ personal }) {
               onClick={() => setIsOpen(false)}
               className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${
                 activeSection === link.href.substring(1)
-                  ? 'bg-indigo-600/20 text-indigo-300 border-l-4 border-indigo-500'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-900'
+                  ? 'bg-[#4a2d50]/10 text-[#654368] border-l-4 border-[#654368]'
+                  : 'text-[#554954] hover:text-[#302333] hover:bg-[#fffaf2]'
               }`}
             >
               {link.label}
             </a>
           ))}
-          <div className="pt-4 border-t border-slate-800 flex justify-around items-center">
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white">
+          <div className="pt-4 border-t border-[#dfd1bb] flex justify-around items-center">
+            <a href="https://github.com" target="_blank" rel="noreferrer" className="text-[#746872] hover:text-[#302333]">
               <Github className="w-6 h-6" />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white">
+            <a href="https://www.linkedin.com/in/dinesh-mehta-551985313/" target="_blank" rel="noreferrer" className="text-[#746872] hover:text-[#302333]">
               <Linkedin className="w-6 h-6" />
             </a>
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               onClick={() => setIsOpen(false)}
-              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-sm font-semibold transition-colors"
+              className="px-4 py-2 bg-gradient-to-r from-[#39223e] to-[#654368] hover:from-[#4a2d50] hover:to-[#735b75] text-[#fffaf2] rounded-lg text-sm font-semibold transition-colors"
             >
               Let's Talk
             </a>

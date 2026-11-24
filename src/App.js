@@ -34,7 +34,9 @@ export default function App() {
       { name: 'HTML5/CSS3', category: 'frontend', icon: '📄' },
       { name: 'Framer Motion', category: 'frontend', icon: '✨' },
       { name: 'C++', category: 'languages', icon: '⚙️' },
-      { name: 'Python', category: 'languages', icon: '🐍' },
+      { name: 'Python', category: 'languages', additionalCategories: ['ai_ml'], icon: '🐍' },
+      { name: 'Machine Learning', category: 'ai_ml', icon: '🧠' },
+      { name: 'Deep Learning', category: 'ai_ml', icon: '🤖' },
       { name: 'Java', category: 'languages', icon: '☕' },
       { name: 'Node.js', category: 'backend', icon: '🟢' },
       { name: 'Express.js', category: 'backend', icon: '🚂' },
@@ -49,6 +51,23 @@ export default function App() {
       { name: 'Recharts', category: 'tools', icon: '📊' }
     ],
     projects: [
+      {
+        id: 4,
+        title: 'Event Control',
+        subtitle: 'Event Operations Dashboard',
+        category: 'Operations / Admin Dashboard',
+        description: 'A centralized event operations dashboard for monitoring infrastructure, coordinating volunteers, tracking inventory and accommodation, and checking room readiness.',
+        tech: ['React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Recharts'],
+        image: 'event-control.png',
+        features: [
+          'Live status overview for CCTV, Wi-Fi, walkie-talkies, and control rooms',
+          'Coordination workspace for event planning and volunteers',
+          'Inventory, accommodation, and arrival tracking',
+          'Room readiness and staffing analysis dashboards'
+        ],
+        demoUrl: 'https://event-control-ochre.vercel.app/',
+        githubUrl: 'https://github.com/dinesh-mehta7/event-control'
+      },
       {
         id: 1,
         title: 'Forge',
@@ -99,6 +118,22 @@ export default function App() {
         ],
         demoUrl: 'https://dealcrasher.vercel.app',
         githubUrl: 'https://github.com'
+      },
+      {
+        id: 5,
+        title: 'URL Shortener',
+        subtitle: 'Short Links & Analytics',
+        category: 'Web App / Productivity',
+        description: 'A web app for turning long URLs into short, shareable links, with account access and information about link analytics.',
+        tech: ['React', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS'],
+        image: 'url-shortener.png',
+        features: [
+          'Create short links from long URLs',
+          'Login entry for account-based features',
+          'FAQ covering accounts and link analytics'
+        ],
+        demoUrl: 'https://url-shortner-psi-lake.vercel.app/',
+        githubUrl: 'https://github.com/dinesh-mehta7/Url_Shortner'
       }
     ]
   };
@@ -139,23 +174,23 @@ export default function App() {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 bg-[#0B1120] flex flex-col items-center justify-center z-50">
+      <div className="fixed inset-0 bg-[#f1e7d5] flex flex-col items-center justify-center z-50">
         <div className="relative w-24 h-24 flex items-center justify-center">
-          <div className="absolute inset-0 border-4 border-indigo-500/20 rounded-full"></div>
-          <div className="absolute inset-0 border-4 border-t-transparent border-r-transparent border-indigo-500 rounded-full animate-spin"></div>
-          <div className="absolute inset-2 border-4 border-b-transparent border-l-transparent border-violet-500 rounded-full animate-spin [animation-duration:1.5s]"></div>
-          <span className="text-cyan-400 font-bold text-xl animate-pulse">DM</span>
+          <div className="absolute inset-0 border-4 border-[#654368]/20 rounded-full"></div>
+          <div className="absolute inset-0 border-4 border-t-transparent border-r-transparent border-[#654368] rounded-full animate-spin"></div>
+          <div className="absolute inset-2 border-4 border-b-transparent border-l-transparent border-[#654368] rounded-full animate-spin [animation-duration:1.5s]"></div>
+          <span className="text-[#735b75] font-bold text-xl animate-pulse">DM</span>
         </div>
         <div className="mt-8 text-center">
-          <h2 className="text-slate-100 text-lg font-semibold tracking-wider uppercase">Dinesh Mehta</h2>
-          <p className="text-indigo-400/80 text-sm mt-1 font-mono">Initiating Developer Environment...</p>
+          <h2 className="text-[#342a35] text-lg font-semibold tracking-wider uppercase">Dinesh Mehta</h2>
+          <p className="text-[#735b75]/80 text-sm mt-1 font-mono">Initiating Developer Environment...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="relative min-h-screen bg-[#0B1120] text-slate-100 overflow-x-hidden selection:bg-indigo-500/30 selection:text-indigo-200 font-sans">
+    <div className="relative min-h-screen royal-shell text-[#342a35] overflow-x-hidden selection:bg-[#654368]/30 selection:text-[#fffaf2] font-sans">
       
       {/* Custom Global Animation Styles */}
       <style dangerouslySetInnerHTML={{__html: `
@@ -178,7 +213,7 @@ export default function App() {
 
       {/* Custom Cursor Dot (only on screens with mouse support) */}
       <div 
-        className="hidden lg:block fixed w-8 h-8 rounded-full border border-indigo-500/40 pointer-events-none z-50 transition-transform duration-75 -translate-x-1/2 -translate-y-1/2 mix-blend-screen"
+        className="hidden lg:block fixed w-8 h-8 rounded-full border border-[#b58a45]/45 pointer-events-none z-50 transition-transform duration-75 -translate-x-1/2 -translate-y-1/2 mix-blend-screen"
         style={{ left: `${mousePos.x}px`, top: `${mousePos.y}px` }}
       />
 
@@ -213,7 +248,7 @@ export default function App() {
       {/* Back to top button */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 z-40 p-3.5 rounded-full bg-slate-900/90 border border-slate-700/60 text-indigo-400 hover:text-indigo-300 hover:border-indigo-500/50 backdrop-blur-md shadow-lg transition-all duration-300 transform ${
+        className={`fixed bottom-8 right-8 z-40 p-3.5 rounded-full bg-[#fffaf2]/90 border border-[#cbb998]/60 text-[#735b75] hover:text-[#8a708d] hover:border-[#654368]/50 backdrop-blur-md shadow-lg transition-all duration-300 transform ${
           showScrollTop ? 'scale-100 translate-y-0 opacity-100' : 'scale-75 translate-y-10 opacity-0 pointer-events-none'
         }`}
         aria-label="Back to top"
